@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const prod = process.env.NODE_ENV === 'production';
-
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
@@ -24,7 +23,7 @@ module.exports = {
             '.scss',
             '.css',
             '.svg',
-            '.woff2'],
+          ],
         },
         use: 'ts-loader',
       },
@@ -35,6 +34,9 @@ module.exports = {
     ],
   },
   devtool: prod ? undefined : 'source-map',
+  devServer: {
+    historyApiFallback: true,
+  },
   plugins: [
     new HtmlWebpackPlugin({
       template: './dist/index.html',
