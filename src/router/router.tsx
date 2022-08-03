@@ -5,15 +5,31 @@ import EpisodePage from '../components/pages/episode/episode';
 import ErrorPage from '../components/pages/error/error';
 import LocationPage from '../components/pages/location/location';
 import MainPage from '../components/pages/main/main';
+import AppRoutes from './app-routes';
 
 function Router() {
   return (
     <Routes>
-      <Route path="/" element={<MainPage />} />
-      <Route path="/character/:id" element={<CharacterPage />} />
-      <Route path="/episode/:id" element={<EpisodePage />} />
-      <Route path="/location/:id" element={<LocationPage />} />
-      <Route path="*" element={<ErrorPage />} />
+      <Route
+        path={AppRoutes.Main}
+        element={<MainPage />}
+      />
+      <Route
+        path={`${AppRoutes.Character}:id`}
+        element={<CharacterPage />}
+      />
+      <Route
+        path={`${AppRoutes.Episode}:id`}
+        element={<EpisodePage />}
+      />
+      <Route
+        path={`${AppRoutes.Location}:id`}
+        element={<LocationPage />}
+      />
+      <Route
+        path="*"
+        element={<ErrorPage />}
+      />
     </Routes>
   );
 }
