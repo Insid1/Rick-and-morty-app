@@ -1,20 +1,43 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { Waypoint } from 'react-waypoint';
+import AppRoutes from '../../../router/app-routes';
+import { selectEpisodes } from '../../../store/data/selectors';
 import { fetchEpisodes, fetchMoreEpisodes } from '../../../store/data/thunks';
-import { useAppDispatch } from '../../../store/hooks';
+import { useAppDispatch, useAppSelector } from '../../../store/hooks';
 
 function Main() {
+  const episodes = useAppSelector(selectEpisodes);
   const dispatch = useAppDispatch();
+
   // first page rendered call
   useEffect(() => {
     dispatch(fetchEpisodes()).catch(() => {});
   }, [dispatch]);
-  // temp effe to load more episodes
-  const handleClick = () => {
+
+  const handleEnterWayPoint = () => {
     dispatch(fetchMoreEpisodes()).catch(() => {});
   };
   return (
     <>
+      {episodes ? episodes.map((episode) => (
+        <div
+          style={{
+            border: '1px solid black',
+            padding: '5px',
+            width: '50vh',
+          }}
+          key={episode.id}
+        >
+          <span>{episode.episode}</span>
+          <span>{episode.airDate}</span>
+          <span>{episode.characters}</span>
+          <span>{episode.name}</span>
+          <span>{episode.url}</span>
+          <br />
+          <Link to={`${AppRoutes.Episode}${episode.id}`}>{episode.id}</Link>
+        </div>
+      )) : ''}
       <div>
         <Link to="/character/1">character</Link>
       </div>
@@ -24,7 +47,8 @@ function Main() {
       <div>
         <Link to="/location/3">location</Link>
       </div>
-      <button onClick={handleClick} type="button">load more</button>
+      <Waypoint onEnter={handleEnterWayPoint} />
+      {/* <button onClick={handleClick} type="button">load more</button> */}
     </>
   );
 }

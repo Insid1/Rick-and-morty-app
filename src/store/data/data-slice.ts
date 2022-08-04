@@ -36,6 +36,7 @@ const dataSlice = createSlice({
       .addCase(
         fetchMoreEpisodes.fulfilled,
         (state, action: PayloadAction<IDataFromFetchMoreEpisodes | null>) => {
+          // may be removed from here to promise rejection
           if (action.payload === null) return;
           state.nextPageEpisode = action.payload.nextPageLink;
           state.prevPageEpisode = action.payload.prevPageLink;
