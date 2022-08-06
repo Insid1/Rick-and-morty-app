@@ -3,11 +3,13 @@ import dataReducer from './episodes/episodes-slice';
 import interfaceReducer from './interface/interface-slice';
 import episodeReducer from './episode/episode-slice';
 import characterReducer from './character/character-slice';
+import locationReducer from './location/location-slice';
 
 enum ReducerName {
   Episode = 'EPISODE',
   Episodes = 'EPISODES',
   Character = 'CHARACTER',
+  location = 'LOCATION',
   Interface = 'INTERFACE',
 }
 
@@ -17,6 +19,7 @@ const store = configureStore({
     [ReducerName.Interface]: interfaceReducer,
     [ReducerName.Episode]: episodeReducer,
     [ReducerName.Character]: characterReducer,
+    [ReducerName.location]: locationReducer,
   },
 });
 

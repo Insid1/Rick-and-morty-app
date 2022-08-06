@@ -1,4 +1,4 @@
-import { IServerCharacter, IServerEpisode } from '../api-types/api-types';
+import { IServerCharacter, IServerEpisode, IServerLocation } from '../api-types/api-types';
 
 interface IEpisode extends Omit<IServerEpisode, 'air_date' | 'characters'> {
   airDate: string,
@@ -9,4 +9,8 @@ interface ICharacter extends Omit<IServerCharacter, 'episode'> {
   episode: number[]
 }
 
-export { IEpisode, ICharacter };
+interface ILocation extends Omit<IServerLocation, 'residents'> {
+  charactersOnLocation: number[],
+}
+
+export { IEpisode, ICharacter, ILocation };

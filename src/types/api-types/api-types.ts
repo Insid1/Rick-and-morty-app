@@ -26,7 +26,17 @@ interface IServerCharacter {
   image: string,
   episode: string[],
   url: string,
-  created: string
+  created: string,
+}
+
+interface IServerLocation {
+  id: number
+  name: string,
+  type: string,
+  dimension: string,
+  residents: string[],
+  url: string,
+  created: string,
 }
 
 interface IServerResponseInfo {
@@ -36,4 +46,6 @@ interface IServerResponseInfo {
   prev: string | null,
 }
 
-export type { IServerEpisode, IServerResponseInfo, IServerCharacter };
+export type {
+  IServerEpisode, IServerResponseInfo, IServerCharacter, IServerLocation,
+};
