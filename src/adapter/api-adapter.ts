@@ -1,5 +1,5 @@
-import type { IServerCharacter, IServerEpisode } from '../types/api-types/api-types';
-import type { ICharacter, IEpisode } from '../types/data-types/data-types';
+import type { IServerCharacter, IServerEpisode, IServerLocation } from '../types/api-types/api-types';
+import type { ICharacter, IEpisode, ILocation } from '../types/data-types/data-types';
 import { getIdsFromApiStrings } from '../utils/common';
 
 const adaptEpisodeToClient = (serverData: IServerEpisode): IEpisode => {
@@ -7,6 +7,7 @@ const adaptEpisodeToClient = (serverData: IServerEpisode): IEpisode => {
   const { air_date: airDate, ...rest } = serverData;
   // as we know that api always sends url with ID endpoint
   const charactersIds = getIdsFromApiStrings(serverData.characters);
+
   return {
     ...rest,
     airDate,
@@ -24,4 +25,15 @@ const adaptCharacterToClient = (serverData: IServerCharacter): ICharacter => {
   };
 };
 
-export { adaptEpisodeToClient, adaptCharacterToClient };
+const adaptLocationToClient = (serverData: IServerLocation): ILocation => {
+  const { residents, ...rest } = serverData;
+  // as we know that api always sends url with ID endpoint
+  const charactersOnLocationIds = getIdsFromApiStrings(residents);
+
+  return {
+    ...rest,
+    charactersOnLocation: charactersOnLocationIds,
+  };
+};
+
+export { adaptEpisodeToClient, adaptCharacterToClient, adaptLocationToClient };
