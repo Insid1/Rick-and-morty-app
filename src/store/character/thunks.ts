@@ -22,7 +22,12 @@ const fetchCharacter = createAsyncThunk<IDataFromFetchCharacter, string, {
     const adaptedCharacter = adaptCharacterToClient(characterData);
     // fetch episodes where character been in
     const { episode } = adaptedCharacter;
-    const { data: episodesData } = await api.get<IServerEpisode[]>(`episode/${episode.join()}`);
+    let { data: episodesData } = await api.get<IServerEpisode[] | IServerEpisode>(`episode/${episode.join()}`);
+
+    // create array so if there is only 1 episode functionality will work
+    if (!Array.isArray(episodesData)) {
+      episodesData = [episodesData];
+    }
     const adaptedEpisodes = episodesData.map(adaptEpisodeToClient);
     return { character: adaptedCharacter, characterEpisodes: adaptedEpisodes };
   },
