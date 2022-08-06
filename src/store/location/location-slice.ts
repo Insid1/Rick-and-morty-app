@@ -1,15 +1,17 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import type { ILocation } from '../../types/data-types/data-types';
-import { fetchLocation } from './thunks';
+import type { ICharacter, ILocation } from '../../types/data-types/data-types';
+import { fetchLocation, IDataFromFetchLocation } from './thunks';
 
 interface IInitialState {
   location: ILocation | null,
+  locationCharacters: ICharacter[],
   isDataLoaded: boolean,
 
 }
 
 const initialState: IInitialState = {
   location: null,
+  locationCharacters: [],
   isDataLoaded: false,
 
 };
@@ -19,9 +21,13 @@ const locationSlice = createSlice({
   initialState,
   reducers: { },
   extraReducers: (builder) => {
-    builder.addCase(fetchLocation.fulfilled, (state, action: PayloadAction<ILocation>) => {
-      state.location = action.payload;
-    });
+    builder.addCase(
+      fetchLocation.fulfilled,
+      (state, action: PayloadAction<IDataFromFetchLocation>) => {
+        state.location = action.payload.location;
+        state.locationCharacters = action.payload.locationCharacters;
+      },
+    );
   },
 });
 
