@@ -5,7 +5,7 @@ const EpisodeThumbnailStyled = styled(Paper)(({ theme }) => ({
   ...theme.transitions.easing,
   display: 'flex',
   flexDirection: 'column',
-  justifyContent: 'center',
+  justifyContent: 'space-around',
   alignItems: 'center',
   padding: theme.spacing(2),
   width: 280,

@@ -22,7 +22,18 @@ declare module '@mui/material/Typography' {
   }
 }
 
+const CONTENT_MAX_WIDTH = 1220;
+
 const theme = createTheme({
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 450,
+      md: 600,
+      lg: 900,
+      xl: 1448,
+    },
+  },
   typography: {
     subText: {
       fontFamily: 'Roboto',
@@ -51,4 +62,5 @@ const theme = createTheme({
   },
 });
 
+export { CONTENT_MAX_WIDTH };
 export default theme;
