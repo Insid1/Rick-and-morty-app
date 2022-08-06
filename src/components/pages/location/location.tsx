@@ -14,7 +14,7 @@ function Location() {
     if (id) {
       dispatch(fetchLocation(id)).catch(() => {});
     }
-  });
+  }, [dispatch, id]);
   return (
     location
       ? (

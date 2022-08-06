@@ -1,9 +1,13 @@
 const parseUrlForLastPath = (url: URL): string | null => url.pathname.split('/').pop() || null;
 
 const getIdFromApiString = (apiString: string): number | null => {
-  const url = new URL(apiString);
-  const id = parseUrlForLastPath(url);
-  return id ? +id : null;
+  try {
+    const url = new URL(apiString);
+    const id = parseUrlForLastPath(url);
+    return id ? +id : null;
+  } catch {
+    return null;
+  }
 };
 
 const getIdsFromApiStrings = (apiStrings: string[]): number[] => {
