@@ -29,7 +29,7 @@ function Character() {
           <p>{character.id}</p>
           <p><Link to={`${AppRoutes.Location}${character.location.id as number}`}>{character.location.name}</Link></p>
           {character.episode.map((episodeId) => (
-            <p>
+            <p key={episodeId}>
               <Link to={`${AppRoutes.Episode}${episodeId}`}>
                 Episode
                 {' '}

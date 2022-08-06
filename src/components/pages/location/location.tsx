@@ -25,7 +25,7 @@ function Location() {
           <p>{location.created}</p>
           <div>
             {location.charactersOnLocation.map((characterId) => (
-              <p>
+              <p key={characterId}>
                 <Link to={`${AppRoutes.Character}${characterId}`}>
                   character id:
                   {' '}
