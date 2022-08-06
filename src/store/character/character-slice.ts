@@ -1,5 +1,6 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import type { ICharacter } from '../../types/data-types/data-types';
+import { fetchCharacter } from './thunks';
 
 interface IInitialState {
   character: ICharacter | null,
@@ -17,6 +18,11 @@ const characterSlice = createSlice({
   name: 'character',
   initialState,
   reducers: { },
+  extraReducers: (builder) => {
+    builder.addCase(fetchCharacter.fulfilled, (state, action: PayloadAction<ICharacter>) => {
+      state.character = action.payload;
+    });
+  },
 });
 
 export default characterSlice.reducer;

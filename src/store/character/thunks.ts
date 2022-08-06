@@ -18,4 +18,4 @@ const fetchCharacter = createAsyncThunk<ICharacter, string, {
   },
 );
 
-export { fetchCharacter as fetchEpisode };
+export { fetchCharacter };
