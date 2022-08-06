@@ -1,15 +1,17 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import type { ICharacter } from '../../types/data-types/data-types';
-import { fetchCharacter } from './thunks';
+import type { ICharacter, IEpisode } from '../../types/data-types/data-types';
+import { fetchCharacter, IDataFromFetchCharacter } from './thunks';
 
 interface IInitialState {
   character: ICharacter | null,
+  characterEpisodes: IEpisode[],
   isDataLoaded: boolean,
 
 }
 
 const initialState: IInitialState = {
   character: null,
+  characterEpisodes: [],
   isDataLoaded: false,
 
 };
@@ -19,9 +21,13 @@ const characterSlice = createSlice({
   initialState,
   reducers: { },
   extraReducers: (builder) => {
-    builder.addCase(fetchCharacter.fulfilled, (state, action: PayloadAction<ICharacter>) => {
-      state.character = action.payload;
-    });
+    builder.addCase(
+      fetchCharacter.fulfilled,
+      (state, action: PayloadAction<IDataFromFetchCharacter>) => {
+        state.character = action.payload.character;
+        state.characterEpisodes = action.payload.characterEpisodes;
+      },
+    );
   },
 });
 

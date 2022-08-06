@@ -1,21 +1,34 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import type { IServerLocation } from '../../types/api-types/api-types';
+import type { IServerCharacter, IServerLocation } from '../../types/api-types/api-types';
 import type { AppDispatch, RootState } from '../store';
-import type { ILocation } from '../../types/data-types/data-types';
+import type { ICharacter, ILocation } from '../../types/data-types/data-types';
 import { api } from '../../api/api';
-import { adaptLocationToClient } from '../../adapter/api-adapter';
+import { adaptCharacterToClient, adaptLocationToClient } from '../../adapter/api-adapter';
 
-const fetchLocation = createAsyncThunk<ILocation, string, {
+interface IDataFromFetchLocation {
+  locationCharacters: ICharacter[],
+  location: ILocation,
+}
+
+const fetchLocation = createAsyncThunk<IDataFromFetchLocation, string, {
   dispatch: AppDispatch,
   state: RootState,
 }>(
   'data/location',
   async (id: string) => {
     // add enums route to avoid direct assignment
-    const response = await api.get<IServerLocation>(`location/${id}`);
-    const { data } = response;
-    return adaptLocationToClient(data);
+    const { data: locationData } = await api.get<IServerLocation>(`location/${id}`);
+    const adaptedLocation = adaptLocationToClient(locationData);
+    // fetch characters on location
+    const { charactersOnLocation } = adaptedLocation;
+    const { data: charactersData } = await api.get<IServerCharacter[]>(`character/${charactersOnLocation.join()}`);
+    const adaptedCharacters = charactersData.map(adaptCharacterToClient);
+    return {
+      location: adaptedLocation,
+      locationCharacters: adaptedCharacters,
+    };
   },
 );
 
 export { fetchLocation };
+export type { IDataFromFetchLocation };
