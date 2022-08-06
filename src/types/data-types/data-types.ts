@@ -1,12 +1,12 @@
-interface IEpisode {
-  id: number,
-  name: string,
+import { IServerCharacter, IServerEpisode } from '../api-types/api-types';
+
+interface IEpisode extends Omit<IServerEpisode, 'air_date' | 'characters'> {
   airDate: string,
-  episode: string,
-  characters: string[],
-  url: string,
-  created: string,
+  characters: number[],
 }
 
-// eslint-disable-next-line import/prefer-default-export
-export { IEpisode };
+interface ICharacter extends Omit<IServerCharacter, 'episode'> {
+  episode: number[]
+}
+
+export { IEpisode, ICharacter };

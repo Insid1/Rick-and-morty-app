@@ -30,5 +30,6 @@ module.exports = {
         'state',
       ],
     }],
+    'import/prefer-default-export': 0,
   },
 };

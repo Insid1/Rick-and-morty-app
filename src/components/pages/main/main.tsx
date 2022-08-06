@@ -2,8 +2,8 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Waypoint } from 'react-waypoint';
 import AppRoutes from '../../../router/app-routes';
-import { selectEpisodes } from '../../../store/data/selectors';
-import { fetchEpisodes, fetchMoreEpisodes } from '../../../store/data/thunks';
+import { selectEpisodes } from '../../../store/episodes/selectors';
+import { fetchEpisodes, fetchMoreEpisodes } from '../../../store/episodes/thunks';
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
 
 function Main() {
@@ -22,11 +22,7 @@ function Main() {
     <>
       {episodes ? episodes.map((episode) => (
         <div
-          style={{
-            border: '1px solid black',
-            padding: '5px',
-            width: '50vh',
-          }}
+          className="container"
           key={episode.id}
         >
           <span>{episode.episode}</span>
@@ -48,7 +44,6 @@ function Main() {
         <Link to="/location/3">location</Link>
       </div>
       <Waypoint onEnter={handleEnterWayPoint} />
-      {/* <button onClick={handleClick} type="button">load more</button> */}
     </>
   );
 }

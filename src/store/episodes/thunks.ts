@@ -43,10 +43,10 @@ const fetchMoreEpisodes = createAsyncThunk<IDataFromFetchMoreEpisodes | null, un
   'data/episodes/more',
   async (_, ThunkApi) => {
     const state = ThunkApi.getState();
-    if (!state.DATA.nextPageEpisode) {
+    if (!state.EPISODES.nextPageEpisode) {
       return null;
     }
-    const response = await api.get<IServerResponse>('', { baseURL: state.DATA.nextPageEpisode });
+    const response = await api.get<IServerResponse>('', { baseURL: state.EPISODES.nextPageEpisode });
     const { data } = response;
     const { results: episodes, info } = data;
     return {

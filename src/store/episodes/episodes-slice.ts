@@ -20,8 +20,8 @@ const initialState: IInitialState = {
 
 };
 
-const dataSlice = createSlice({
-  name: 'data',
+const episodesSlice = createSlice({
+  name: 'episodes',
   initialState,
   reducers: { },
   extraReducers: (builder) => {
@@ -47,4 +47,4 @@ const dataSlice = createSlice({
 
 });
 
-export default dataSlice.reducer;
+export default episodesSlice.reducer;

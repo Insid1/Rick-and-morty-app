@@ -1,16 +1,22 @@
 import { configureStore } from '@reduxjs/toolkit';
-import dataReducer from './data/data-slice';
+import dataReducer from './episodes/episodes-slice';
 import interfaceReducer from './interface/interface-slice';
+import episodeReducer from './episode/episode-slice';
+import characterReducer from './character/character-slice';
 
 enum ReducerName {
-  Data = 'DATA',
+  Episode = 'EPISODE',
+  Episodes = 'EPISODES',
+  Character = 'CHARACTER',
   Interface = 'INTERFACE',
 }
 
 const store = configureStore({
   reducer: {
-    [ReducerName.Data]: dataReducer,
+    [ReducerName.Episodes]: dataReducer,
     [ReducerName.Interface]: interfaceReducer,
+    [ReducerName.Episode]: episodeReducer,
+    [ReducerName.Character]: characterReducer,
   },
 });
 

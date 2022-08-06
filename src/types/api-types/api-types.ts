@@ -8,6 +8,27 @@ interface IServerEpisode {
   created: string,
 }
 
+interface IServerCharacter {
+  id: number,
+  name: string,
+  status: string,
+  species: string,
+  type: string,
+  gender: string,
+  origin: {
+    name: string,
+    url: string
+  },
+  location: {
+    name: string,
+    url: string
+  },
+  image: string,
+  episode: string[],
+  url: string,
+  created: string
+}
+
 interface IServerResponseInfo {
   count: number,
   next: string | null,
@@ -15,5 +36,4 @@ interface IServerResponseInfo {
   prev: string | null,
 }
 
-// eslint-disable-next-line import/prefer-default-export
-export type { IServerEpisode, IServerResponseInfo };
+export type { IServerEpisode, IServerResponseInfo, IServerCharacter };
