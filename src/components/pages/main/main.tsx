@@ -1,10 +1,10 @@
+import Grid from '@mui/material/Grid';
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { Waypoint } from 'react-waypoint';
-import AppRoutes from '../../../router/app-routes';
 import { selectEpisodes } from '../../../store/episodes/selectors';
 import { fetchEpisodes, fetchMoreEpisodes } from '../../../store/episodes/thunks';
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
+import EpisodeThumbnail from '../../common/episode-thumbnail/episode-thumbnail';
 
 function Main() {
   const episodes = useAppSelector(selectEpisodes);
@@ -20,29 +20,13 @@ function Main() {
   };
   return (
     <>
-      {episodes ? episodes.map((episode) => (
-        <div
-          className="container"
-          key={episode.id}
-        >
-          <span>{episode.episode}</span>
-          <span>{episode.airDate}</span>
-          <span>{episode.characters}</span>
-          <span>{episode.name}</span>
-          <span>{episode.url}</span>
-          <br />
-          <Link to={`${AppRoutes.Episode}${episode.id}`}>{episode.id}</Link>
-        </div>
-      )) : ''}
-      <div>
-        <Link to="/character/1">character</Link>
-      </div>
-      <div>
-        <Link to="/episode/2">episode</Link>
-      </div>
-      <div>
-        <Link to="/location/3">location</Link>
-      </div>
+      <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+        {episodes && episodes.map((episode) => (
+          <Grid key={episode.id} item xs={3}>
+            <EpisodeThumbnail episode={episode} />
+          </Grid>
+        ))}
+      </Grid>
       <Waypoint onEnter={handleEnterWayPoint} />
     </>
   );

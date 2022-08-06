@@ -1,5 +1,5 @@
-body {
-  background-color: rgb(116, 192, 116);
+a {
+  text-decoration: none;
 }
 /* temp class for development */
 .container {
