@@ -27,7 +27,7 @@ function Character() {
           <p>{character.episode}</p>
           <p>{character.gender}</p>
           <p>{character.id}</p>
-          <p><Link to={character.location.url}>{character.location.name}</Link></p>
+          <p><Link to={`${AppRoutes.Location}${character.location.id as number}`}>{character.location.name}</Link></p>
           {character.episode.map((episodeId) => (
             <p>
               <Link to={`${AppRoutes.Episode}${episodeId}`}>

@@ -1,5 +1,5 @@
 import { RootState } from '../store';
 
-// const selectLocation = (state: RootState) => (state.CHARACTER.character);
+const selectLocation = (state: RootState) => (state.LOCATION.location);
 
-// export { selectCharacter };
+export { selectLocation };
