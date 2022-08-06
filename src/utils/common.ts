@@ -1,9 +1,14 @@
 const parseUrlForLastPath = (url: URL): string | null => url.pathname.split('/').pop() || null;
 
+const getIdFromApiString = (apiString: string): number | null => {
+  const url = new URL(apiString);
+  const id = parseUrlForLastPath(url);
+  return id ? +id : null;
+};
+
 const getIdsFromApiStrings = (apiStrings: string[]): number[] => {
   const apiIds = apiStrings.reduce<number[]>((prevValue, currValue) => {
-    const url = new URL(currValue);
-    const id = parseUrlForLastPath(url);
+    const id = getIdFromApiString(currValue);
     if (id) {
       prevValue.push(+id);
     }
@@ -12,4 +17,4 @@ const getIdsFromApiStrings = (apiStrings: string[]): number[] => {
   return apiIds;
 };
 
-export { parseUrlForLastPath, getIdsFromApiStrings };
+export { parseUrlForLastPath, getIdFromApiString, getIdsFromApiStrings };

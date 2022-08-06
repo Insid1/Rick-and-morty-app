@@ -8,6 +8,11 @@ interface IServerEpisode {
   created: string,
 }
 
+interface IServerCharacterLocation {
+  name: string,
+  url: string
+}
+
 interface IServerCharacter {
   id: number,
   name: string,
@@ -19,10 +24,7 @@ interface IServerCharacter {
     name: string,
     url: string
   },
-  location: {
-    name: string,
-    url: string
-  },
+  location: IServerCharacterLocation,
   image: string,
   episode: string[],
   url: string,
@@ -47,5 +49,5 @@ interface IServerResponseInfo {
 }
 
 export type {
-  IServerEpisode, IServerResponseInfo, IServerCharacter, IServerLocation,
+  IServerEpisode, IServerResponseInfo, IServerCharacter, IServerLocation, IServerCharacterLocation,
 };

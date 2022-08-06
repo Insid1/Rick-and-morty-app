@@ -1,6 +1,6 @@
 import type { IServerCharacter, IServerEpisode, IServerLocation } from '../types/api-types/api-types';
 import type { ICharacter, IEpisode, ILocation } from '../types/data-types/data-types';
-import { getIdsFromApiStrings } from '../utils/common';
+import { getIdFromApiString, getIdsFromApiStrings } from '../utils/common';
 
 const adaptEpisodeToClient = (serverData: IServerEpisode): IEpisode => {
   // remove field air_date and assign its value to airDate
@@ -16,12 +16,18 @@ const adaptEpisodeToClient = (serverData: IServerEpisode): IEpisode => {
 };
 
 const adaptCharacterToClient = (serverData: IServerCharacter): ICharacter => {
+  const { location, ...rest } = serverData;
+  const locationId = getIdFromApiString(location.url);
   // as we know that api always sends url with ID endpoint
   const episodesIds = getIdsFromApiStrings(serverData.episode);
 
   return {
-    ...serverData,
+    ...rest,
     episode: episodesIds,
+    location: {
+      ...location,
+      id: locationId,
+    },
   };
 };
 
