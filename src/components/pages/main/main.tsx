@@ -4,7 +4,6 @@ import { Waypoint } from 'react-waypoint';
 import { selectEpisodes } from '../../../store/episodes/selectors';
 import { fetchEpisodes, fetchMoreEpisodes } from '../../../store/episodes/thunks';
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
-import Header from '../../common/header/header';
 import rickAndMortyImg from '../../../assets/img/rick-and-morty2.png';
 import TitleImg from '../../common/UI/title-img/title-img';
 import TextfieldFilter from '../../common/UI/textfield-filter/textfield-filter';
@@ -23,15 +22,12 @@ function Main() {
     dispatch(fetchMoreEpisodes()).catch(() => {});
   };
   return (
-    <>
-      <Header />
-      <Container maxWidth="xl">
-        <TitleImg imgSrc={rickAndMortyImg} width={270} height={210} />
-        <TextfieldFilter label="Filter by name or episode (ex. S01 or S01E02)" />
-        <EpisodesList episodes={episodes} />
-      </Container>
+    <Container maxWidth="xl">
+      <TitleImg imgSrc={rickAndMortyImg} width={270} height={210} />
+      <TextfieldFilter label="Filter by name or episode (ex. S01 or S01E02)" />
+      <EpisodesList episodes={episodes} />
       <Waypoint onEnter={handleEnterWayPoint} />
-    </>
+    </Container>
   );
 }
 
