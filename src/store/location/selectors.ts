@@ -2,4 +2,6 @@ import { RootState } from '../store';
 
 const selectLocation = (state: RootState) => (state.LOCATION.location);
 
-export { selectLocation };
+const selectLocationCharacters = (state: RootState) => (state.LOCATION.locationCharacters);
+
+export { selectLocation, selectLocationCharacters };
