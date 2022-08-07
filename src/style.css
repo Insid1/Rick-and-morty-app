@@ -1,5 +1,21 @@
 body {
-  background-color: rgb(116, 192, 116);
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  font-family: 'Roboto';
+  box-sizing: border-box;
+}
+
+ul, li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
 }
 /* temp class for development */
 .container {
