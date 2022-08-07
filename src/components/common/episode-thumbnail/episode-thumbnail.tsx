@@ -9,7 +9,7 @@ import AppRoutes from '../../../router/app-routes';
 function EpisodeThumbnail({ episode } : { episode: IEpisode }) {
   const formattedDate = dayjs(episode.created).format('D MMMM YYYY');
   return (
-    <Grid component="li" justifySelf="center" key={episode.id} item>
+    <Grid component="li" justifySelf="center" item>
       <Link to={`${AppRoutes.Episode}${episode.id}`}>
         <EpisodeThumbnailStyled sx={{ p: 1 }}>
           <Typography align="center" variant="h6">{episode.name}</Typography>
