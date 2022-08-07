@@ -1,6 +1,6 @@
 import React from 'react';
 import { IEpisode } from '../../../types/data-types/data-types';
-import CardsContainer from '../cards-container/cards-container';
+import CardsContainer from '../UI/cards-container/cards-container';
 import EpisodeThumbnail from '../episode-thumbnail/episode-thumbnail';
 
 interface IEpisodesList {

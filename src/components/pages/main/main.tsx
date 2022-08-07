@@ -6,8 +6,8 @@ import { fetchEpisodes, fetchMoreEpisodes } from '../../../store/episodes/thunks
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
 import Header from '../../common/header/header';
 import rickAndMortyImg from '../../../assets/img/rick-and-morty2.png';
-import TitleImg from '../../common/title-img/title-img';
-import TextfieldFilter from '../../common/textfield-filter/textfield-filter';
+import TitleImg from '../../common/UI/title-img/title-img';
+import TextfieldFilter from '../../common/UI/textfield-filter/textfield-filter';
 import EpisodesList from '../../common/episodes-list/episodes-list';
 
 function Main() {
@@ -27,7 +27,7 @@ function Main() {
       <Header />
       <Container maxWidth="xl">
         <TitleImg imgSrc={rickAndMortyImg} width={270} height={210} />
-        <TextfieldFilter />
+        <TextfieldFilter label="Filter by name or episode (ex. S01 or S01E02)" />
         <EpisodesList episodes={episodes} />
       </Container>
       <Waypoint onEnter={handleEnterWayPoint} />
