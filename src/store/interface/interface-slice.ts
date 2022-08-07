@@ -1,12 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 interface IInitialState {
-  sortingType: string | null,
+  filterString: string | null,
 
 }
 
 const initialState: IInitialState = {
-  sortingType: null,
+  filterString: null,
 
 };
 

@@ -1,8 +1,11 @@
+import { Alert, Container } from '@mui/material';
 import React from 'react';
 
 function Error() {
   return (
-    <div>Error</div>
+    <Container maxWidth="xl">
+      <Alert severity="error">OOOps... Page does not exists</Alert>
+    </Container>
   );
 }
 
