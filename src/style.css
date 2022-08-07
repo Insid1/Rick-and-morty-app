@@ -17,6 +17,12 @@ ul, li {
 a {
   text-decoration: none;
 }
+
+a:visited {
+  color: inherit;
+  /* text-decoration-color: hotpink; */
+}
+
 /* temp class for development */
 .container {
   border: 1px solid black;

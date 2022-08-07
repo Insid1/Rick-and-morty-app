@@ -1,22 +1,27 @@
 import React from 'react';
-import { Box, Typography } from '@mui/material';
+import { Box, BoxProps, Typography } from '@mui/material';
 
-interface ISmallInfo {
+interface ISmallInfo extends BoxProps {
   title: string,
   text: string,
 }
 
-function SmallInfo({ title, text }: ISmallInfo) {
+function SmallInfo({
+  title, text, ...rest
+}: ISmallInfo) {
   return (
-    <Box sx={{
-      height: 64,
-      borderBottom: '1px solid #bbbbbb',
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'space-between',
-      maxWidth: 400,
-      minWidth: 240,
-    }}
+    <Box
+      {...rest}
+      sx={{
+        height: 64,
+        borderBottom: '1px solid #bbbbbb',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+        maxWidth: 400,
+        minWidth: 240,
+        p: 1,
+      }}
     >
       <Typography component="h3" variant="h6">{title}</Typography>
       <Typography variant="subText">{text}</Typography>
@@ -24,4 +29,5 @@ function SmallInfo({ title, text }: ISmallInfo) {
   );
 }
 
+export type { ISmallInfo };
 export default SmallInfo;
