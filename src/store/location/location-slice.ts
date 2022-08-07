@@ -39,6 +39,12 @@ const locationSlice = createSlice({
           state.isDataLoaded = initialState.isDataLoaded;
           state.error = initialState.error;
         },
+      )
+      .addCase(
+        fetchLocation.rejected,
+        (state, action) => {
+          state.error = action.payload as string;
+        },
       );
   },
 });

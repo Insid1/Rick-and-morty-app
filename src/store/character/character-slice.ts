@@ -38,6 +38,12 @@ const characterSlice = createSlice({
           state.isDataLoaded = initialState.isDataLoaded;
           state.error = initialState.error;
         },
+      )
+      .addCase(
+        fetchCharacter.rejected,
+        (state, action) => {
+          state.error = action.payload as string;
+        },
       );
   },
 });

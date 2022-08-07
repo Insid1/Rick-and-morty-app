@@ -1,10 +1,12 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
 import type { IServerEpisode, IServerResponseInfo } from '../../types/api-types/api-types';
 import type { AppDispatch, RootState } from '../store';
 import type { IEpisode } from '../../types/data-types/data-types';
 import { api } from '../../api/api';
 import { adaptEpisodeToClient } from '../../adapter/api-adapter';
 import ApiRoutes from '../../api/api-routes';
+import { UNEXPECTED_ERROR } from '../../consts/consts';
 
 interface IServerResponse {
   info: IServerResponseInfo,
@@ -23,16 +25,24 @@ interface IDataFromFetchMoreEpisodes extends IDataFromFetchEpisodes {
 const fetchEpisodes = createAsyncThunk<IDataFromFetchEpisodes, undefined, {
   dispatch: AppDispatch,
   state: RootState,
+  rejectValue: string,
 }>(
   'data/episodes',
-  async () => {
-    const response = await api.get<IServerResponse>(ApiRoutes.Episode);
-    const { data } = response;
-    const { results: episodes, info } = data;
-    return {
-      episodes: episodes.map(adaptEpisodeToClient),
-      nextPageLink: info.next,
-    };
+  async (_, { rejectWithValue }) => {
+    try {
+      const response = await api.get<IServerResponse>(ApiRoutes.Episode);
+      const { data } = response;
+      const { results: episodes, info } = data;
+      return {
+        episodes: episodes.map(adaptEpisodeToClient),
+        nextPageLink: info.next,
+      };
+    } catch (err) {
+      if (axios.isAxiosError(err)) {
+        return rejectWithValue(err.message);
+      }
+      return rejectWithValue(UNEXPECTED_ERROR);
+    }
   },
 );
 
