@@ -15,7 +15,7 @@ function SmallInfo({ title, text }: ISmallInfo) {
       flexDirection: 'column',
       justifyContent: 'space-between',
       maxWidth: 400,
-      minWidth: 200,
+      minWidth: 240,
     }}
     >
       <Typography component="h3" variant="h6">{title}</Typography>
