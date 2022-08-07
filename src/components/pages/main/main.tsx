@@ -27,6 +27,7 @@ function Main() {
       <TextfieldFilter label="Filter by name or episode (ex. S01 or S01E02)" />
       <EpisodesList episodes={episodes} />
       <Waypoint onEnter={handleEnterWayPoint} />
+      <br />
     </Container>
   );
 }
