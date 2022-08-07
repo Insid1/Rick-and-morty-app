@@ -2,5 +2,6 @@ import { RootState } from '../store';
 
 const selectEpisodes = (state: RootState) => (state.EPISODES.episodes);
 
-// eslint-disable-next-line import/prefer-default-export
-export { selectEpisodes };
+const selectLoadEpisodesError = (state: RootState) => (state.EPISODES.error);
+
+export { selectEpisodes, selectLoadEpisodesError };

@@ -9,6 +9,7 @@ interface IInitialState {
   nextPageEpisode: string | null,
   prevPageEpisode: string | null,
   isDataLoaded: boolean,
+  error: string | null,
 
 }
 
@@ -17,6 +18,7 @@ const initialState: IInitialState = {
   nextPageEpisode: null,
   prevPageEpisode: null,
   isDataLoaded: false,
+  error: null,
 
 };
 
@@ -26,6 +28,7 @@ const episodesSlice = createSlice({
   reducers: { },
   extraReducers: (builder) => {
     builder
+    // fetch once
       .addCase(
         fetchEpisodes.fulfilled,
         (state, action: PayloadAction<IDataFromFetchEpisodes>) => {
@@ -34,6 +37,23 @@ const episodesSlice = createSlice({
         },
       )
       .addCase(
+        fetchEpisodes.pending,
+        (state) => {
+          state.episodes = initialState.episodes;
+          state.nextPageEpisode = initialState.nextPageEpisode;
+          state.prevPageEpisode = initialState.prevPageEpisode;
+          state.isDataLoaded = initialState.isDataLoaded;
+          state.error = initialState.error;
+        },
+      )
+      .addCase(
+        fetchEpisodes.rejected,
+        (state, action) => {
+          state.error = '123';
+        },
+      )
+    // fetch more
+      .addCase(
         fetchMoreEpisodes.fulfilled,
         (state, action: PayloadAction<IDataFromFetchMoreEpisodes | null>) => {
           // may be removed from here to promise rejection
@@ -41,6 +61,12 @@ const episodesSlice = createSlice({
           state.nextPageEpisode = action.payload.nextPageLink;
           state.prevPageEpisode = action.payload.prevPageLink;
           state.episodes = state.episodes.concat(action.payload.episodes);
+        },
+      )
+      .addCase(
+        fetchMoreEpisodes.rejected,
+        (state, action) => {
+          state.error = '123';
         },
       );
   },

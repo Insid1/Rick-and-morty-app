@@ -6,6 +6,7 @@ interface IInitialState {
   location: ILocation | null,
   locationCharacters: ICharacter[],
   isDataLoaded: boolean,
+  error: string | null,
 
 }
 
@@ -13,6 +14,7 @@ const initialState: IInitialState = {
   location: null,
   locationCharacters: [],
   isDataLoaded: false,
+  error: null,
 
 };
 
@@ -35,6 +37,7 @@ const locationSlice = createSlice({
           state.location = initialState.location;
           state.locationCharacters = initialState.locationCharacters;
           state.isDataLoaded = initialState.isDataLoaded;
+          state.error = initialState.error;
         },
       );
   },

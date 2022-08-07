@@ -17,7 +17,6 @@ const fetchLocation = createAsyncThunk<IDataFromFetchLocation, string, {
 }>(
   'data/location',
   async (id: string) => {
-    // add enums route to avoid direct assignment
     const { data: locationData } = await api.get<IServerLocation>(`${ApiRoutes.Location}${id}`);
     const adaptedLocation = adaptLocationToClient(locationData);
     // fetch characters on location

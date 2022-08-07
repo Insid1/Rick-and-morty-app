@@ -41,6 +41,12 @@ const episodeSlice = createSlice({
           state.isDataLoaded = initialState.isDataLoaded;
           state.error = initialState.error;
         },
+      )
+      .addCase(
+        fetchEpisode.rejected,
+        (state, action) => {
+          state.error = '123';
+        },
       );
   },
 

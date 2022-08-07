@@ -6,6 +6,7 @@ interface IInitialState {
   character: ICharacter | null,
   characterEpisodes: IEpisode[],
   isDataLoaded: boolean,
+  error: string | null,
 
 }
 
@@ -13,6 +14,7 @@ const initialState: IInitialState = {
   character: null,
   characterEpisodes: [],
   isDataLoaded: false,
+  error: null,
 
 };
 
@@ -27,7 +29,16 @@ const characterSlice = createSlice({
         state.character = action.payload.character;
         state.characterEpisodes = action.payload.characterEpisodes;
       },
-    );
+    )
+      .addCase(
+        fetchCharacter.pending,
+        (state) => {
+          state.character = initialState.character;
+          state.characterEpisodes = initialState.characterEpisodes;
+          state.isDataLoaded = initialState.isDataLoaded;
+          state.error = initialState.error;
+        },
+      );
   },
 });
 

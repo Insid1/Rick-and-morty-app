@@ -26,7 +26,6 @@ const fetchEpisodes = createAsyncThunk<IDataFromFetchEpisodes, undefined, {
 }>(
   'data/episodes',
   async () => {
-    // add enums route to avoid direct assignment
     const response = await api.get<IServerResponse>(ApiRoutes.Episode);
     const { data } = response;
     const { results: episodes, info } = data;
