@@ -23,6 +23,7 @@ module.exports = {
             '.scss',
             '.css',
             '.svg',
+            '.jpg',
           ],
         },
         use: 'ts-loader',
@@ -35,6 +36,10 @@ module.exports = {
         test: /\.svg$/i,
         issuer: /\.[jt]sx?$/,
         use: ['@svgr/webpack'],
+      },
+      {
+        test: /\.(png|jpe?g)$/,
+        loader: 'file-loader',
       },
     ],
   },
