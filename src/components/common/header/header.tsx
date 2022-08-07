@@ -1,34 +1,27 @@
 import React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
-import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
+import { Link as RouterLink } from 'react-router-dom';
+import { Button } from '@mui/material';
+import Logo from '../../../assets/img/logo-black.svg';
 import { ToolBarStyled } from './header.styled';
+import AppRoutes from '../../../router/app-routes';
 
 function Header() {
   return (
     <Box sx={{ flexGrow: 1, marginBottom: 5 }}>
-      <AppBar position="static">
+      <AppBar position="static" variant="elevation">
         <Container maxWidth="xl">
           <ToolBarStyled>
-            123
-            {/* <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            sx={{ mr: 2 }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            News
-          </Typography>
-          <Button color="inherit">Login</Button> */}
+            <RouterLink to={AppRoutes.Main}>
+              <Logo />
+            </RouterLink>
+            <Box sx={{ marginLeft: 'auto' }}>
+              <Button variant="contained" href={AppRoutes.Main}>
+                Main page
+              </Button>
+            </Box>
           </ToolBarStyled>
         </Container>
       </AppBar>

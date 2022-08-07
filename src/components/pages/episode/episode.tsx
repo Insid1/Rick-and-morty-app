@@ -1,5 +1,6 @@
+import Link from '@mui/material/Link';
 import React, { useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import AppRoutes from '../../../router/app-routes';
 import { selectEpisode } from '../../../store/episode/selectors';
 import { fetchEpisode } from '../../../store/episode/thunks';
@@ -18,7 +19,7 @@ function Episode() {
   }, [dispatch, id]);
   return (
     <>
-      <Link to="/">main</Link>
+      <Link href="/">Link</Link>
       {episode
         ? (
           <div className="container">
@@ -29,7 +30,7 @@ function Episode() {
             <p>{episode.name}</p>
             <p>{episode.url}</p>
             {episode.characters.map((charId) => (
-              <Link key={charId} to={`${AppRoutes.Character}${charId}`}>
+              <Link key={charId} href={`${AppRoutes.Character}${charId}`}>
                 Character id:
                 {charId}
               </Link>

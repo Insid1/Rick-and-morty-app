@@ -1,5 +1,6 @@
 import createTheme from '@mui/material/styles/createTheme';
 import { green, grey } from '@mui/material/colors';
+import { extendedComponents } from './router-link';
 
 declare module '@mui/material/styles' {
   interface TypographyVariants {
@@ -25,6 +26,17 @@ declare module '@mui/material/Typography' {
 const CONTENT_MAX_WIDTH = 1220;
 
 const theme = createTheme({
+  components: {
+    ...extendedComponents,
+    MuiAppBar: {
+      styleOverrides: {
+        colorPrimary: {
+          backgroundColor: grey[50],
+        },
+      },
+    },
+
+  },
   breakpoints: {
     values: {
       xs: 0,
