@@ -10,6 +10,7 @@
   "author": "Oleg Volobuev",
   "license": "ISC",
   "devDependencies": {
+    "@svgr/webpack": "^6.3.1",
     "@types/react": "^18.0.15",
     "@types/react-dom": "^18.0.6",
     "@typescript-eslint/eslint-plugin": "^5.32.0",
@@ -37,8 +38,10 @@
     "@mui/icons-material": "^5.8.4",
     "@mui/material": "^5.9.3",
     "@reduxjs/toolkit": "^1.8.3",
+    "@types/mui-image": "^1.0.0",
     "axios": "^0.27.2",
     "dayjs": "^1.11.4",
+    "mui-image": "^1.0.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.2",
