@@ -4,6 +4,7 @@ import type { AppDispatch, RootState } from '../store';
 import type { ICharacter, IEpisode } from '../../types/data-types/data-types';
 import { api } from '../../api/api';
 import { adaptCharacterToClient, adaptEpisodeToClient } from '../../adapter/api-adapter';
+import ApiRoutes from '../../api/api-routes';
 
 interface IDataFromFetchEpisode {
   episode: IEpisode,
@@ -16,14 +17,13 @@ const fetchEpisode = createAsyncThunk<IDataFromFetchEpisode, string, {
 }>(
   'data/episode',
   async (id: string) => {
-    // add enums route to avoid direct assignment
-    const response = await api.get<IServerEpisode>(`episode/${id}`);
+    const response = await api.get<IServerEpisode>(`${ApiRoutes.Episode}${id}`);
     const { data: EpisodeData } = response;
     const adaptedEpisodeData = adaptEpisodeToClient(EpisodeData);
 
     // fetch data about characters in episode
     const charactersInEpisodeIds = adaptedEpisodeData.characters;
-    const responseWithCharacters = await api.get<IServerCharacter[]>(`character/${charactersInEpisodeIds.join()}`);
+    const responseWithCharacters = await api.get<IServerCharacter[]>(`${ApiRoutes.Character}${charactersInEpisodeIds.join()}`);
     const { data: characters } = responseWithCharacters;
     const adaptedCharacters = characters.map(adaptCharacterToClient);
 

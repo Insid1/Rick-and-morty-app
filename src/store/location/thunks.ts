@@ -4,6 +4,7 @@ import type { AppDispatch, RootState } from '../store';
 import type { ICharacter, ILocation } from '../../types/data-types/data-types';
 import { api } from '../../api/api';
 import { adaptCharacterToClient, adaptLocationToClient } from '../../adapter/api-adapter';
+import ApiRoutes from '../../api/api-routes';
 
 interface IDataFromFetchLocation {
   locationCharacters: ICharacter[],
@@ -17,11 +18,11 @@ const fetchLocation = createAsyncThunk<IDataFromFetchLocation, string, {
   'data/location',
   async (id: string) => {
     // add enums route to avoid direct assignment
-    const { data: locationData } = await api.get<IServerLocation>(`location/${id}`);
+    const { data: locationData } = await api.get<IServerLocation>(`${ApiRoutes.Location}${id}`);
     const adaptedLocation = adaptLocationToClient(locationData);
     // fetch characters on location
     const { charactersOnLocation } = adaptedLocation;
-    const { data: charactersData } = await api.get<IServerCharacter[]>(`character/${charactersOnLocation.join()}`);
+    const { data: charactersData } = await api.get<IServerCharacter[]>(`${ApiRoutes.Character}${charactersOnLocation.join()}`);
     const adaptedCharacters = charactersData.map(adaptCharacterToClient);
     return {
       location: adaptedLocation,

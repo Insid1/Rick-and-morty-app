@@ -21,13 +21,22 @@ const locationSlice = createSlice({
   initialState,
   reducers: { },
   extraReducers: (builder) => {
-    builder.addCase(
-      fetchLocation.fulfilled,
-      (state, action: PayloadAction<IDataFromFetchLocation>) => {
-        state.location = action.payload.location;
-        state.locationCharacters = action.payload.locationCharacters;
-      },
-    );
+    builder
+      .addCase(
+        fetchLocation.fulfilled,
+        (state, action: PayloadAction<IDataFromFetchLocation>) => {
+          state.location = action.payload.location;
+          state.locationCharacters = action.payload.locationCharacters;
+          state.isDataLoaded = true;
+        },
+      ).addCase(
+        fetchLocation.pending,
+        (state) => {
+          state.location = initialState.location;
+          state.locationCharacters = initialState.locationCharacters;
+          state.isDataLoaded = initialState.isDataLoaded;
+        },
+      );
   },
 });
 

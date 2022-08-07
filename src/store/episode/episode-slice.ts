@@ -9,13 +9,14 @@ interface IInitialState {
   episode: IEpisode | null,
   charactersInEpisode: ICharacter[]
   isDataLoaded: boolean,
-
+  error: string | null,
 }
 
 const initialState: IInitialState = {
   episode: null,
   charactersInEpisode: [],
   isDataLoaded: false,
+  error: null,
 
 };
 
@@ -30,6 +31,15 @@ const episodeSlice = createSlice({
         (state, action: PayloadAction<IDataFromFetchEpisode>) => {
           state.episode = action.payload.episode;
           state.charactersInEpisode = action.payload.charactersInEpisode;
+          state.isDataLoaded = true;
+        },
+      ).addCase(
+        fetchEpisode.pending,
+        (state) => {
+          state.episode = initialState.episode;
+          state.charactersInEpisode = initialState.charactersInEpisode;
+          state.isDataLoaded = initialState.isDataLoaded;
+          state.error = initialState.error;
         },
       );
   },

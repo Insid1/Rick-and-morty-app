@@ -4,6 +4,7 @@ import type { AppDispatch, RootState } from '../store';
 import type { IEpisode } from '../../types/data-types/data-types';
 import { api } from '../../api/api';
 import { adaptEpisodeToClient } from '../../adapter/api-adapter';
+import ApiRoutes from '../../api/api-routes';
 
 interface IServerResponse {
   info: IServerResponseInfo,
@@ -26,7 +27,7 @@ const fetchEpisodes = createAsyncThunk<IDataFromFetchEpisodes, undefined, {
   'data/episodes',
   async () => {
     // add enums route to avoid direct assignment
-    const response = await api.get<IServerResponse>('episode');
+    const response = await api.get<IServerResponse>(ApiRoutes.Episode);
     const { data } = response;
     const { results: episodes, info } = data;
     return {
