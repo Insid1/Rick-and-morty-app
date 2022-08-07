@@ -1,12 +1,15 @@
 import Container from '@mui/material/Container';
-import Grid from '@mui/material/Grid';
 import React, { useEffect } from 'react';
 import { Waypoint } from 'react-waypoint';
 import { selectEpisodes } from '../../../store/episodes/selectors';
 import { fetchEpisodes, fetchMoreEpisodes } from '../../../store/episodes/thunks';
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
-import EpisodeThumbnail from '../../common/episode-thumbnail/episode-thumbnail';
 import Header from '../../common/header/header';
+import rickAndMortyImg from '../../../assets/img/rick-and-morty2.png';
+import TitleImg from '../../common/title-img/title-img';
+import CardContainer from '../../common/card-container/card-container';
+import TextfieldFilter from '../../common/textfield-filter/textfield-filter';
+import EpisodesList from '../../common/episodes-list/episodes-list';
 
 function Main() {
   const episodes = useAppSelector(selectEpisodes);
@@ -24,21 +27,11 @@ function Main() {
     <>
       <Header />
       <Container maxWidth="xl">
-        <Grid
-          container
-          // rowSpacing={1}
-          justifyContent="center"
-          gap={5}
-          columnSpacing={{
-            xs: 1, sm: 2, md: 3, xl: 4,
-          }}
-        >
-          {episodes && episodes.map((episode) => (
-            <Grid justifySelf="center" key={episode.id} item>
-              <EpisodeThumbnail episode={episode} />
-            </Grid>
-          ))}
-        </Grid>
+        <TitleImg imgSrc={rickAndMortyImg} width={270} height={210} />
+        <TextfieldFilter label="Filter by name or episode (ex. S01 or S01E02)" />
+        <CardContainer component="ul">
+          <EpisodesList episodes={episodes} />
+        </CardContainer>
       </Container>
       <Waypoint onEnter={handleEnterWayPoint} />
     </>
