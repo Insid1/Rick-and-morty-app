@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import type { IEpisode } from '../../types/data-types/data-types';
+import type { IEpisode } from '@/types/data-types/data-types';
 import {
   fetchEpisodes, fetchEpisodesWithQuery,
   fetchMoreEpisodes, IDataFromFetchEpisodes, IDataFromFetchMoreEpisodes,

@@ -1,4 +1,4 @@
-import { RootState } from '../store';
+import { RootState } from '@/store/store';
 
 const selectEpisode = (state: RootState) => (state.EPISODE.episode);
 

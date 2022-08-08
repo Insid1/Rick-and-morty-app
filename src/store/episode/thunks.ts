@@ -1,12 +1,12 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import type { IServerCharacter, IServerEpisode } from '../../types/api-types/api-types';
+import type { IServerCharacter, IServerEpisode } from '@/types/api-types/api-types';
+import type { ICharacter, IEpisode } from '@/types/data-types/data-types';
+import { api } from '@/api/api';
+import { adaptCharacterToClient, adaptEpisodeToClient } from '@/adapter/api-adapter';
+import ApiRoutes from '@/api/api-routes';
+import { UNEXPECTED_ERROR } from '@/consts/consts';
 import type { AppDispatch, RootState } from '../store';
-import type { ICharacter, IEpisode } from '../../types/data-types/data-types';
-import { api } from '../../api/api';
-import { adaptCharacterToClient, adaptEpisodeToClient } from '../../adapter/api-adapter';
-import ApiRoutes from '../../api/api-routes';
-import { UNEXPECTED_ERROR } from '../../consts/consts';
 
 interface IDataFromFetchEpisode {
   episode: IEpisode,

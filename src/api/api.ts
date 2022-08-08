@@ -15,4 +15,3 @@ const createApi = (): AxiosInstance => {
 const api = createApi();
 
 export { api };
-export default createApi;

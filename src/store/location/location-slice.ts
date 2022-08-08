@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import type { ICharacter, ILocation } from '../../types/data-types/data-types';
+import type { ICharacter, ILocation } from '@/types/data-types/data-types';
 import { fetchLocation, IDataFromFetchLocation } from './thunks';
 
 interface IInitialState {

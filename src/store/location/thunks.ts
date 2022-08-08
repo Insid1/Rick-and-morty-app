@@ -1,12 +1,12 @@
+import { adaptLocationToClient, adaptCharacterToClient } from '@/adapter/api-adapter';
+import { api } from '@/api/api';
+import ApiRoutes from '@/api/api-routes';
+import { UNEXPECTED_ERROR } from '@/consts/consts';
+import type { IServerLocation, IServerCharacter } from '@/types/api-types/api-types';
+import type { ICharacter, ILocation } from '@/types/data-types/data-types';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import type { IServerCharacter, IServerLocation } from '../../types/api-types/api-types';
 import type { AppDispatch, RootState } from '../store';
-import type { ICharacter, ILocation } from '../../types/data-types/data-types';
-import { api } from '../../api/api';
-import { adaptCharacterToClient, adaptLocationToClient } from '../../adapter/api-adapter';
-import ApiRoutes from '../../api/api-routes';
-import { UNEXPECTED_ERROR } from '../../consts/consts';
 
 interface IDataFromFetchLocation {
   locationCharacters: ICharacter[],

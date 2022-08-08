@@ -1,12 +1,12 @@
+import { adaptEpisodeToClient } from '@/adapter/api-adapter';
+import { api } from '@/api/api';
+import ApiRoutes from '@/api/api-routes';
+import { UNEXPECTED_ERROR } from '@/consts/consts';
+import type { IServerResponseInfo, IServerEpisode } from '@/types/api-types/api-types';
+import type { IEpisode } from '@/types/data-types/data-types';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import type { IServerEpisode, IServerResponseInfo } from '../../types/api-types/api-types';
 import type { AppDispatch, RootState } from '../store';
-import type { IEpisode } from '../../types/data-types/data-types';
-import { api } from '../../api/api';
-import { adaptEpisodeToClient } from '../../adapter/api-adapter';
-import ApiRoutes from '../../api/api-routes';
-import { UNEXPECTED_ERROR } from '../../consts/consts';
 
 interface IServerResponse {
   info: IServerResponseInfo,

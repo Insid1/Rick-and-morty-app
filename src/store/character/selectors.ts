@@ -1,4 +1,4 @@
-import { RootState } from '../store';
+import { RootState } from '@/store/store';
 
 const selectCharacter = (state: RootState) => (state.CHARACTER.character);
 

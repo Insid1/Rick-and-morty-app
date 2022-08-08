@@ -1,10 +1,10 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import CharacterPage from '../components/pages/character/character';
-import EpisodePage from '../components/pages/episode/episode';
-import ErrorPage from '../components/pages/error/error';
-import LocationPage from '../components/pages/location/location';
-import MainPage from '../components/pages/main/main';
+import ErrorPage from '@/components/pages/error/error';
+import CharacterPage from '@/components/pages/character/character';
+import EpisodePage from '@/components/pages/episode/episode';
+import LocationPage from '@/components/pages/location/location';
+import MainPage from '@/components/pages/main/main';
 import AppRoutes from './app-routes';
 
 function Router() {
