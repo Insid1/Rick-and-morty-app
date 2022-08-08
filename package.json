@@ -11,6 +11,7 @@
   "license": "ISC",
   "devDependencies": {
     "@svgr/webpack": "^6.3.1",
+    "@types/lodash.debounce": "^4.0.7",
     "@types/react": "^18.0.15",
     "@types/react-dom": "^18.0.6",
     "@typescript-eslint/eslint-plugin": "^5.32.0",
@@ -42,6 +43,7 @@
     "@types/mui-image": "^1.0.0",
     "axios": "^0.27.2",
     "dayjs": "^1.11.4",
+    "lodash.debounce": "^4.0.8",
     "mui-image": "^1.0.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

@@ -1,7 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import type { IEpisode } from '../../types/data-types/data-types';
 import {
-  fetchEpisodes, fetchMoreEpisodes, IDataFromFetchEpisodes, IDataFromFetchMoreEpisodes,
+  fetchEpisodes, fetchEpisodesWithQuery,
+  fetchMoreEpisodes, IDataFromFetchEpisodes, IDataFromFetchMoreEpisodes,
 } from './thunks';
 
 interface IInitialState {
@@ -67,6 +68,21 @@ const episodesSlice = createSlice({
         fetchMoreEpisodes.rejected,
         (state, action) => {
           state.error = action.payload as string;
+        },
+      )
+      // fetch with query
+      .addCase(
+        fetchEpisodesWithQuery.fulfilled,
+        (state, action: PayloadAction<IDataFromFetchEpisodes>) => {
+          state.episodes = action.payload.episodes;
+          state.nextPageEpisode = action.payload.nextPageLink;
+        },
+      )
+      .addCase(
+        fetchEpisodesWithQuery.rejected,
+        (state) => {
+          state.episodes = [];
+          state.error = 'Ooops, nothing found';
         },
       );
   },

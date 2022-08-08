@@ -66,6 +66,29 @@ const fetchMoreEpisodes = createAsyncThunk<IDataFromFetchMoreEpisodes | null, un
     };
   },
 );
+const fetchEpisodesWithQuery = createAsyncThunk<IDataFromFetchEpisodes, string, {
+  dispatch: AppDispatch,
+  state: RootState,
+  rejectValue: string,
+}>(
+  'data/episodes/query',
+  async (queryString, { rejectWithValue }) => {
+    try {
+      const response = await api.get<IServerResponse>(`${ApiRoutes.Episode}${queryString}`);
+      const { data } = response;
+      const { results: episodes, info } = data;
+      return {
+        episodes: episodes.map(adaptEpisodeToClient),
+        nextPageLink: info.next,
+      };
+    } catch (err) {
+      if (axios.isAxiosError(err)) {
+        return rejectWithValue(err.message);
+      }
+      return rejectWithValue(UNEXPECTED_ERROR);
+    }
+  },
+);
 
-export { fetchEpisodes, fetchMoreEpisodes };
+export { fetchEpisodes, fetchMoreEpisodes, fetchEpisodesWithQuery };
 export type { IDataFromFetchEpisodes, IDataFromFetchMoreEpisodes };
