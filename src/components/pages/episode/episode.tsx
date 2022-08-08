@@ -1,17 +1,17 @@
+import CharacterThumbnail from '@/components/common/character-thumbnail/character-thumbnail';
+import GoBackLink from '@/components/common/go-back-link/go-back-link';
+import LoaderErrorHandler from '@/components/common/loader-error-handler/loader-error-handler';
+import CardsContainer from '@/components/common/UI/cards-container/cards-container';
+import SectionTitle from '@/components/common/UI/section-title/section-title';
+import SmallInfo from '@/components/common/UI/small-info/small-info';
+import { selectEpisode, selectCharactersInEpisode, selectLoadEpisodeError } from '@/store/episode/selectors';
+import { fetchEpisode } from '@/store/episode/thunks';
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
+import { formatDate } from '@/utils/date';
 import { Stack, Typography } from '@mui/material';
 import Container from '@mui/material/Container';
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { selectCharactersInEpisode, selectEpisode, selectLoadEpisodeError } from '../../../store/episode/selectors';
-import { fetchEpisode } from '../../../store/episode/thunks';
-import { useAppDispatch, useAppSelector } from '../../../store/hooks';
-import { formatDate } from '../../../utils/date';
-import CharacterThumbnail from '../../common/character-thumbnail/character-thumbnail';
-import GoBackLink from '../../common/go-back-link/go-back-link';
-import LoaderErrorHandler from '../../common/loader-error-handler/loader-error-handler';
-import CardsContainer from '../../common/UI/cards-container/cards-container';
-import SectionTitle from '../../common/UI/section-title/section-title';
-import SmallInfo from '../../common/UI/small-info/small-info';
 
 function Episode() {
   const { id } = useParams();

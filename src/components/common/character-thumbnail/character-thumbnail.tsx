@@ -1,11 +1,11 @@
+import AppRoutes from '@/router/app-routes';
+import type { ICharacter } from '@/types/data-types/data-types';
 import {
   CardMedia, CardContent, Typography, Grid,
 } from '@mui/material';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import AppRoutes from '../../../router/app-routes';
 import * as S from './character-thumbnail.styled';
-import { ICharacter } from '../../../types/data-types/data-types';
 
 function CharacterThumbnail({
   id, name, species, image,

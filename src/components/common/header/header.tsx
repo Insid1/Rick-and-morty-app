@@ -4,9 +4,9 @@ import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import { Link as RouterLink } from 'react-router-dom';
 import { Button } from '@mui/material';
-import Logo from '../../../assets/img/logo-black.svg';
+import Logo from '@/assets/img/logo-black.svg';
+import AppRoutes from '@/router/app-routes';
 import { ToolBarStyled } from './header.styled';
-import AppRoutes from '../../../router/app-routes';
 
 function Header() {
   return (

@@ -1,13 +1,13 @@
 import Container from '@mui/material/Container';
 import React, { useEffect } from 'react';
 import { Waypoint } from 'react-waypoint';
-import { selectEpisodes, selectLoadEpisodesError } from '../../../store/episodes/selectors';
-import { fetchEpisodes, fetchMoreEpisodes } from '../../../store/episodes/thunks';
-import { useAppDispatch, useAppSelector } from '../../../store/hooks';
-import rickAndMortyImg from '../../../assets/img/rick-and-morty2.png';
-import TitleImg from '../../common/UI/title-img/title-img';
-import EpisodesList from '../../common/episodes-list/episodes-list';
-import LoaderErrorHandler from '../../common/loader-error-handler/loader-error-handler';
+import TitleImg from '@/components/common/UI/title-img/title-img';
+import rickAndMortyImg from '@/assets/img/rick-and-morty2.png';
+import EpisodesList from '@/components/common/episodes-list/episodes-list';
+import LoaderErrorHandler from '@/components/common/loader-error-handler/loader-error-handler';
+import { selectEpisodes, selectLoadEpisodesError } from '@/store/episodes/selectors';
+import { fetchEpisodes, fetchMoreEpisodes } from '@/store/episodes/thunks';
+import { useAppSelector, useAppDispatch } from '@/store/hooks';
 import Filter from './components/filter';
 
 function Main() {

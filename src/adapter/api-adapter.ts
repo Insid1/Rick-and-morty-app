@@ -1,6 +1,6 @@
-import type { IServerCharacter, IServerEpisode, IServerLocation } from '../types/api-types/api-types';
-import type { ICharacter, IEpisode, ILocation } from '../types/data-types/data-types';
-import { getIdFromApiString, getIdsFromApiStrings } from '../utils/common';
+import { IServerEpisode, IServerCharacter, IServerLocation } from '@/types/api-types/api-types';
+import { IEpisode, ICharacter, ILocation } from '@/types/data-types/data-types';
+import { getIdsFromApiStrings, getIdFromApiString } from '@/utils/common';
 
 const adaptEpisodeToClient = (serverData: IServerEpisode): IEpisode => {
   // remove field air_date and assign its value to airDate

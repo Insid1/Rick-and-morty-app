@@ -1,10 +1,10 @@
 import React, { memo } from 'react';
 import { Grid, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
+import AppRoutes from '@/router/app-routes';
+import { IEpisode } from '@/types/data-types/data-types';
+import { formatDate } from '@/utils/date';
 import { EpisodeThumbnailStyled } from './episode-thumbnail.styled';
-import { IEpisode } from '../../../types/data-types/data-types';
-import AppRoutes from '../../../router/app-routes';
-import { formatDate } from '../../../utils/date';
 
 function EpisodeThumbnail({ episode } : { episode: IEpisode }) {
   return (

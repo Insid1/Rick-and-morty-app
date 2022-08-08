@@ -1,6 +1,4 @@
-import axios, {
-  AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse,
-} from 'axios';
+import axios, { AxiosInstance } from 'axios';
 
 const BASE_URL = 'https://rickandmortyapi.com/api/';
 const REQUEST_TIMEOUT = 5000;
@@ -10,15 +8,6 @@ const createApi = (): AxiosInstance => {
     baseURL: BASE_URL,
     timeout: REQUEST_TIMEOUT,
   });
-
-  // api.interceptors.response.use(
-  //   (response: AxiosResponse): AxiosResponse => response,
-  //   (error: AxiosError): AxiosError => error,
-  // );
-
-  // api.interceptors.request.use(
-  //   (config: AxiosRequestConfig): AxiosRequestConfig => config,
-  // );
 
   return api;
 };

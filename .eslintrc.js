@@ -60,21 +60,5 @@ module.exports = {
       'plugin:@typescript-eslint/recommended',
       'plugin:@typescript-eslint/recommended-requiring-type-checking',
     ],
-    // 'import/extensions': [
-    //   '.js',
-    //   '.jsx',
-    //   'tsx',
-    //   'ts',
-    // ],
-    // 'import/resolver': {
-    //   node: {
-    //     extensions: [
-    //       '.js',
-    //       '.jsx',
-    //       '.ts',
-    //       '.tsx',
-    //     ],
-    //   },
-    // },
   },
 };

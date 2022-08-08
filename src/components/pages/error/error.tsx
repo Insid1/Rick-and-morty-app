@@ -1,4 +1,5 @@
-import { Alert, Container } from '@mui/material';
+import Alert from '@mui/material/Alert';
+import Container from '@mui/material/Container';
 import React from 'react';
 
 function Error() {
