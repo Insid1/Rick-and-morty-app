@@ -51,5 +51,9 @@
     "react-router-dom": "^6.3.0",
     "react-waypoint": "^10.3.0",
     "redux": "^4.2.0"
+  },
+  "engines": {
+    "npm": "^8",
+    "node": "^16"
   }
 }
