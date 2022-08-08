@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "esModuleInterop": true,
+    "skipLibCheck": true,
     "jsx": "react",
     "module": "esnext",
     "moduleResolution": "node",
@@ -11,6 +12,12 @@
     "strict": true,
     "sourceMap": true,
     "target": "ES5",
+    "baseUrl": "src",
+    "paths": {
+      "@/*": [
+        "*"
+      ]
+    }
   },
   "exclude": [
     "node_modules"
