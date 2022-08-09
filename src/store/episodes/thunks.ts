@@ -30,8 +30,7 @@ const fetchEpisodes = createAsyncThunk<IDataFromFetchEpisodes, undefined, {
   'data/episodes',
   async (_, { rejectWithValue }) => {
     try {
-      const response = await api.get<IServerResponse>(ApiRoutes.Episode);
-      const { data } = response;
+      const { data } = await api.get<IServerResponse>(ApiRoutes.Episode);
       const { results: episodes, info } = data;
       return {
         episodes: episodes.map(adaptEpisodeToClient),

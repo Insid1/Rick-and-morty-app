@@ -21,8 +21,7 @@ const fetchCharacter = createAsyncThunk<IDataFromFetchCharacter, string, {
   'data/character',
   async (id: string, { rejectWithValue }) => {
     try {
-      const response = await api.get<IServerCharacter>(`${ApiRoutes.Character}/${id}`);
-      const { data: characterData } = response;
+      const { data: characterData } = await api.get<IServerCharacter>(`${ApiRoutes.Character}/${id}`);
       const adaptedCharacter = adaptCharacterToClient(characterData);
       // fetch episodes where character been in
       const { episode } = adaptedCharacter;
